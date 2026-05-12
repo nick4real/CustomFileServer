@@ -1,5 +1,4 @@
 ﻿using CFS.Application.Interfaces.Repositories;
-using CFS.Domain.Entities;
 using Microsoft.AspNetCore.Http;
 using MongoDB.Bson;
 using MongoDB.Driver.GridFS;

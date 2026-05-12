@@ -15,7 +15,7 @@ public class FileController(IFileService fileService) : BaseController
     }
 
     [HttpPost]
-    public async Task<IActionResult> UploadFile([FromForm] IFormFile file, CancellationToken ct)
+    public async Task<IActionResult> UploadFile(IFormFile file, CancellationToken ct)
     {
         if (file is null || file.Length == 0)
             return BadRequest("No file provided.");
