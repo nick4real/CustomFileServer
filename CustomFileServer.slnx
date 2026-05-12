@@ -1,0 +1,15 @@
+<Solution>
+  <Folder Name="/API/">
+    <Project Path="CFS/CFS.API/CFS.API.csproj" Id="7bfaddca-21c2-466d-88f1-0e1b2cd19f3f" />
+    <Project Path="CFS/CFS.Application/CFS.Application.csproj" Id="31d33686-9022-4dd7-9f75-2d6e0fb1ffdd" />
+    <Project Path="CFS/CFS.Domain/CFS.Domain.csproj" Id="67b7012c-e4ab-4343-9987-36a95d92e35a" />
+    <Project Path="CFS/CFS.Infrastructure/CFS.Infrastructure.csproj" Id="2a49ab28-eb33-47d9-810a-b2234ca3718f" />
+  </Folder>
+  <Folder Name="/Aspire/">
+    <Project Path="CFS.AspireApp/CFS.AspireApp.AppHost/CFS.AspireApp.AppHost.csproj" />
+    <Project Path="CFS.AspireApp/CFS.AspireApp.ServiceDefaults/CFS.AspireApp.ServiceDefaults.csproj" />
+  </Folder>
+  <Folder Name="/Clients/">
+    <Project Path="CFS.BlazorWebApp/CFS.BlazorWebApp.csproj" />
+  </Folder>
+</Solution>

@@ -1,0 +1,22 @@
+﻿<Project Sdk="Aspire.AppHost.Sdk/13.2.4">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <UserSecretsId>27bfdbfe-94d8-4f19-826b-dd6b194d5c02</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Aspire.Hosting.MongoDB" Version="13.2.4" />
+    <PackageReference Include="Aspire.Hosting.PostgreSQL" Version="13.2.4" />
+    <PackageReference Include="OpenTelemetry.Exporter.OpenTelemetryProtocol" Version="1.15.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\CFS.BlazorWebApp\CFS.BlazorWebApp.csproj" />
+    <ProjectReference Include="..\..\CFS\CFS.API\CFS.API.csproj" />
+  </ItemGroup>
+
+</Project>

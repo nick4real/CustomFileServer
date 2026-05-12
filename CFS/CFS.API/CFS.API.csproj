@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+	<PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.2" />
+	<PackageReference Include="Scalar.AspNetCore" Version="2.12.18" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\CFS.AspireApp\CFS.AspireApp.ServiceDefaults\CFS.AspireApp.ServiceDefaults.csproj" />
+    <ProjectReference Include="..\CFS.Application\CFS.Application.csproj" />
+    <ProjectReference Include="..\CFS.Infrastructure\CFS.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>
