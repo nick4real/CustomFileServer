@@ -1,9 +1,11 @@
 var builder = DistributedApplication.CreateBuilder(args);
 
 var mongo = builder.AddMongoDB("CFS-MongoServer")
-    .WithLifetime(ContainerLifetime.Persistent);
+    .WithLifetime(ContainerLifetime.Persistent)
+    .WithMongoExpress();
 var postgres = builder.AddPostgres("CFS-PostgresServer")
-    .WithLifetime(ContainerLifetime.Persistent);
+    .WithLifetime(ContainerLifetime.Persistent)
+    .WithPgAdmin();
 
 var mongoDb = mongo.AddDatabase("CFS-MongoDB");
 var postgresDb = postgres.AddDatabase("CFS-PostgresDB");
