@@ -6,6 +6,6 @@ namespace CFS.Application.Interfaces.Repositories
     {
         Task<IReadOnlyList<Metadata>?> GetAllMetadataAsync(CancellationToken ct);
         Task<Metadata?> GetMetadataByIdAsync(Guid id, CancellationToken ct);
-        Task AddMetadataAsync(CancellationToken ct);
+        Task AddMetadataAsync(Metadata metadata, CancellationToken ct);
     }
 }

@@ -8,6 +8,6 @@ namespace CFS.Application.Interfaces.Services
     {
         Task<Result<List<MetadataDto>>> GetFilesAsync(CancellationToken ct);
         Task<Result<MetadataDto>> UploadFileAsync(IFormFile file, CancellationToken ct);
-        Task<Result<MetadataDto>> DownloadFileAsync(Guid id, CancellationToken ct);
+        Task<Result<FileDownloadDto>> DownloadFileAsync(Guid id, CancellationToken ct);
     }
 }

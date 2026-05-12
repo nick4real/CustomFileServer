@@ -27,6 +27,7 @@ public static class ServiceCollectionExtension
 
             //Repositories
             services.AddScoped<IMetadataRepository, MetadataRepository>();
+            services.AddScoped<IFileRepository, FileRepository>();
 
             return services;
         }

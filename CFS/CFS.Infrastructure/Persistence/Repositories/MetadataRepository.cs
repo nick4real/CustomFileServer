@@ -16,12 +16,19 @@ namespace CFS.Infrastructure.Persistence.Repositories
 
         public async Task<Metadata?> GetMetadataByIdAsync(Guid id, CancellationToken ct)
         {
-            throw new NotImplementedException();
+            if (ct.IsCancellationRequested)
+                return null;
+
+            return await appDbContext.Set<Metadata>().FirstOrDefaultAsync(m => m.Id == id, ct);
         }
 
-        public async Task AddMetadataAsync(CancellationToken ct)
+        public async Task AddMetadataAsync(Metadata metadata, CancellationToken ct)
         {
-            throw new NotImplementedException();
+            if (ct.IsCancellationRequested)
+                return;
+
+            await appDbContext.Set<Metadata>().AddAsync(metadata, ct);
+            await appDbContext.SaveChangesAsync(ct);
         }
     }
 }

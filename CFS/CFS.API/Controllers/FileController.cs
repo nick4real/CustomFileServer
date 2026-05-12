@@ -27,7 +27,11 @@ public class FileController(IFileService fileService) : BaseController
     [HttpGet("{id:guid}")]
     public async Task<IActionResult> DownloadFile([FromRoute] Guid id, CancellationToken ct)
     {
-        var result = await fileService.GetFilesAsync(ct);
-        return HandleResult(result);
+        var result = await fileService.DownloadFileAsync(id, ct);
+        if (!result.IsSuccess)
+            return HandleResult(result);
+
+        var file = result.Value!;
+        return File(file.Content, file.ContentType, file.FileName);
     }
 }
