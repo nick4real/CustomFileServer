@@ -11,5 +11,9 @@
   </Folder>
   <Folder Name="/Clients/">
     <Project Path="CFS.BlazorWebApp/CFS.BlazorWebApp.csproj" />
+    <Project Path="CFS.ReactWebApp/cfs.reactwebapp.esproj">
+      <Build />
+      <Deploy />
+    </Project>
   </Folder>
 </Solution>
