@@ -9,7 +9,6 @@ var mongo = builder.AddMongoDB("CFS-MongoServer")
     });
 var postgres = builder.AddPostgres("CFS-PostgresServer")
     .WithLifetime(ContainerLifetime.Persistent)
-    .WithDataVolume()
     .WithPgAdmin(c =>
     {
         c.WithContainerName("PgAdmin");
