@@ -52,7 +52,6 @@ await using (var dbContext = serviceScope.ServiceProvider.GetRequiredService<App
 
     await executionStrategy.ExecuteAsync(async () =>
     {
-        await dbContext.Database.EnsureDeletedAsync();
         await dbContext.Database.EnsureCreatedAsync();
     });
 }
