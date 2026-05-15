@@ -16,7 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\CFS.BlazorWebApp\CFS.BlazorWebApp.csproj" />
     <ProjectReference Include="..\..\CFS\CFS.API\CFS.API.csproj" />
   </ItemGroup>
 

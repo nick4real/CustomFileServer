@@ -10,7 +10,6 @@
     <Project Path="CFS.AspireApp/CFS.AspireApp.ServiceDefaults/CFS.AspireApp.ServiceDefaults.csproj" />
   </Folder>
   <Folder Name="/Clients/">
-    <Project Path="CFS.BlazorWebApp/CFS.BlazorWebApp.csproj" />
     <Project Path="CFS.ReactWebApp/cfs.reactwebapp.esproj">
       <Build />
       <Deploy />
