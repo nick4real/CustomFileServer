@@ -24,9 +24,6 @@ var api = builder.AddProject<Projects.CFS_API>("cfs-api")
     .WaitFor(mongoDb)
     .WaitFor(postgresDb);
 
-var web = builder.AddProject<Projects.CFS_BlazorWebApp>("cfs-blazorwebapp")
-    .WithReference(api);
-
 #pragma warning disable ASPIREJAVASCRIPT001 // Type is for evaluation purposes only and is subject to change or removal in future updates. Suppress this diagnostic to proceed.
 var react = builder.AddViteApp("cfs-reactapp", "./../../cfs.reactwebapp", "dev")
     .PublishAsStaticWebsite(apiPath: "/file", apiTarget: api)
