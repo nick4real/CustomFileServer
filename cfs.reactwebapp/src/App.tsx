@@ -1,5 +1,5 @@
 import type { FileInfo } from "./types.ts";
-import ListGroup from "./components/ListGroup.tsx";
+import FileList from "./components/FileList.tsx";
 import { useEffect, useState } from "react";
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
   return (
     <div>
       <input type="button" value="Load info" onClick={loadInfo} />
-      <ListGroup items={items} />
+      <FileList items={items} />
     </div>
   );
 }
