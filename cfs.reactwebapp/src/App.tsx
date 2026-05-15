@@ -1,5 +1,6 @@
 import type { FileInfo } from "./types.ts";
 import FileList from "./components/FileList.tsx";
+import UploadFileForm from "./components/UploadFileForm.tsx";
 import { useEffect, useState } from "react";
 
 function App() {
@@ -15,6 +16,8 @@ function App() {
 
   return (
     <div>
+      <UploadFileForm />
+      <br></br>
       <input type="button" value="Load info" onClick={loadInfo} />
       <FileList items={items} />
     </div>
