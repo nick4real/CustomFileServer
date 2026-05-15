@@ -1,5 +1,4 @@
 ﻿using CFS.Application.Interfaces.Repositories;
-using CFS.Domain.Entities;
 using Microsoft.AspNetCore.Http;
 using MongoDB.Bson;
 using MongoDB.Driver.GridFS;
@@ -8,7 +7,7 @@ namespace CFS.Infrastructure.Persistence.Repositories;
 
 public class FileRepository(MongoDbContext dbContext) : IFileRepository
 {
-    public async Task SaveFile(IFormFile file, CancellationToken ct)
+    public async Task<string> SaveFileAsync(IFormFile file, CancellationToken ct)
     {
         ObjectId gridFsId;
         await using (var stream = file.OpenReadStream())
@@ -25,23 +24,19 @@ public class FileRepository(MongoDbContext dbContext) : IFileRepository
             };
 
             gridFsId = await dbContext.GridFSBucket.UploadFromStreamAsync(file.FileName, stream, options, ct);
-        };
+        }
 
-        var metadata = new Metadata
-        {
-            Id = Guid.NewGuid(),
-            FileName = file.FileName,
-            ContentType = file.ContentType,
-            SizeBytes = file.Length,
-            UploadedAtUtc = DateTimeOffset.UtcNow,
-            GridFsId = gridFsId.ToString()
-        };
-
-
+        return gridFsId.ToString();
     }
 
-    public async Task LoadFile(Guid id, CancellationToken ct)
+    public async Task<Stream?> LoadFileAsync(string gridFsId, CancellationToken ct)
     {
-        throw new NotImplementedException();
+        if (!ObjectId.TryParse(gridFsId, out var objectId))
+            return null;
+
+        var stream = new MemoryStream();
+        await dbContext.GridFSBucket.DownloadToStreamAsync(objectId, stream, cancellationToken: ct);
+        stream.Position = 0;
+        return stream;
     }
 }

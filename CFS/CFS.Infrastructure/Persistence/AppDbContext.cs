@@ -1,12 +1,11 @@
 ﻿using CFS.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace CFS.Infrastructure.Persistence
-{
-    public class AppDbContext : DbContext
-    {
-        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
+namespace CFS.Infrastructure.Persistence;
 
-        public DbSet<Metadata> Metadatas { get; set; } = null!;
-    }
+public class AppDbContext : DbContext
+{
+    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
+
+    public DbSet<Metadata> Metadatas { get; set; }
 }

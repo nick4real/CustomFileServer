@@ -15,7 +15,8 @@ public class FileController(IFileService fileService) : BaseController
     }
 
     [HttpPost]
-    public async Task<IActionResult> UploadFile([FromForm] IFormFile file, CancellationToken ct)
+    [RequestSizeLimit(100 * 1024 * 1024)] // Limit to 100 MB
+    public async Task<IActionResult> UploadFile(IFormFile file, CancellationToken ct)
     {
         if (file is null || file.Length == 0)
             return BadRequest("No file provided.");
@@ -27,7 +28,11 @@ public class FileController(IFileService fileService) : BaseController
     [HttpGet("{id:guid}")]
     public async Task<IActionResult> DownloadFile([FromRoute] Guid id, CancellationToken ct)
     {
-        var result = await fileService.GetFilesAsync(ct);
-        return HandleResult(result);
+        var result = await fileService.DownloadFileAsync(id, ct);
+        if (!result.IsSuccess)
+            return HandleResult(result);
+
+        var file = result.Value!;
+        return File(file.Content, file.ContentType, file.FileName);
     }
 }

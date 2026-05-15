@@ -4,6 +4,6 @@ namespace CFS.Application.Interfaces.Repositories;
 
 public interface IFileRepository
 {
-    Task SaveFile(IFormFile file, CancellationToken ct);
-    Task LoadFile(Guid id, CancellationToken ct);
+    Task<string> SaveFileAsync(IFormFile file, CancellationToken ct);
+    Task<Stream?> LoadFileAsync(string gridFsId, CancellationToken ct);
 }
