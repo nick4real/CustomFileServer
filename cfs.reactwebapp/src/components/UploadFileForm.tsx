@@ -4,7 +4,7 @@ function UploadFileForm() {
   const [uploading, setUploading] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
     e.preventDefault();
     setMessage(null);
     const form = e.currentTarget;
@@ -25,12 +25,10 @@ function UploadFileForm() {
       if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
       const json = await res.json().catch(() => null);
       setMessage((json && json.message) || "Upload successful");
-      // keep on same page: do not navigate, just update state
     } catch (err) {
       setMessage("Upload failed");
     } finally {
       setUploading(false);
-      // optionally: clear the file input
       if (input) input.value = "";
     }
   }
