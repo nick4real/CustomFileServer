@@ -28,7 +28,8 @@ function FileList({ items }: FileListProps) {
                 <strong>Type:</strong> {item.contentType}
               </div>
               <div>
-                <strong>Size:</strong> {item.sizeBytes.toLocaleString()} bytes
+                <strong>Size:</strong>
+                {SizeUnitConverter({ sizeBytes: item.sizeBytes })}
               </div>
               <div>
                 <strong>Uploaded:</strong>{" "}
@@ -40,6 +41,16 @@ function FileList({ items }: FileListProps) {
       </ul>
     </>
   );
+}
+
+function SizeUnitConverter({ sizeBytes }: { sizeBytes: number }) {
+  if (sizeBytes < 1024) {
+    return <span>{sizeBytes} B</span>;
+  } else if (sizeBytes < 1024 * 1024) {
+    return <span>{(sizeBytes / 1024).toLocaleString()} KB</span>;
+  }
+
+  return <span>{(sizeBytes / (1024 * 1024)).toLocaleString()} MB</span>;
 }
 
 function DownloadFile(fileId: string) {
