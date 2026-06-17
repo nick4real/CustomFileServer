@@ -11,7 +11,7 @@ public class BaseController : ControllerBase
 
         return result.Error!.Code switch
         {
-            ErrorCode.ValidationFailed => BadRequest(result.Error),
+            ErrorCode.BadRequest => BadRequest(result.Error),
             ErrorCode.NotFound => NotFound(result.Error),
             ErrorCode.Conflict => Conflict(result.Error),
             _ => StatusCode(StatusCodes.Status500InternalServerError, "Unknown error.")
@@ -24,7 +24,7 @@ public class BaseController : ControllerBase
 
         return result.Error!.Code switch
         {
-            ErrorCode.ValidationFailed => BadRequest(result.Error),
+            ErrorCode.BadRequest => BadRequest(result.Error),
             ErrorCode.NotFound => NotFound(result.Error),
             ErrorCode.Conflict => Conflict(result.Error),
             _ => StatusCode(StatusCodes.Status500InternalServerError, "Unknown error.")

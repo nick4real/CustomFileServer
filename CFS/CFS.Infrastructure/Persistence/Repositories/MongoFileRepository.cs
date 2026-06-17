@@ -5,7 +5,7 @@ using MongoDB.Driver.GridFS;
 
 namespace CFS.Infrastructure.Persistence.Repositories;
 
-public class FileRepository(MongoDbContext dbContext) : IFileRepository
+public class MongoFileRepository(MongoDbContext dbContext) : IFileRepository
 {
     public async Task<string> SaveFileAsync(IFormFile file, CancellationToken ct)
     {

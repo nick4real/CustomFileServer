@@ -12,6 +12,7 @@ public static class ServiceCollectionExtension
         {
             //Services
             services.AddScoped<IFileService, FileService>();
+            services.AddScoped<IProductService, ProductService>();
 
             return services;
         }

@@ -27,7 +27,8 @@ public static class ServiceCollectionExtension
 
             //Repositories
             services.AddScoped<IMetadataRepository, MetadataRepository>();
-            services.AddScoped<IFileRepository, FileRepository>();
+            services.AddScoped<IFileRepository, MongoFileRepository>();
+            services.AddScoped<IProductRepository, MongoProductRepository>();
 
             return services;
         }

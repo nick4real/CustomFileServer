@@ -24,10 +24,10 @@ public class FileService(IMetadataRepository metadataRepository, IFileRepository
     public async Task<Result<MetadataDto>> UploadFileAsync(IFormFile file, CancellationToken ct)
     {
         if (ct.IsCancellationRequested)
-            return Result<MetadataDto>.Failure(new Error(ErrorCode.ValidationFailed, "Request was cancelled."));
+            return Result<MetadataDto>.Failure(new Error(ErrorCode.BadRequest, "Request was cancelled."));
 
         if (file is null || file.Length == 0)
-            return Result<MetadataDto>.Failure(new Error(ErrorCode.ValidationFailed, "No file provided."));
+            return Result<MetadataDto>.Failure(new Error(ErrorCode.BadRequest, "No file provided."));
 
         var gridFsId = await fileRepository.SaveFileAsync(file, ct);
 
@@ -49,7 +49,7 @@ public class FileService(IMetadataRepository metadataRepository, IFileRepository
     public async Task<Result<FileDownloadDto>> DownloadFileAsync(Guid id, CancellationToken ct)
     {
         if (ct.IsCancellationRequested)
-            return Result<FileDownloadDto>.Failure(new Error(ErrorCode.ValidationFailed, "Request was cancelled."));
+            return Result<FileDownloadDto>.Failure(new Error(ErrorCode.BadRequest, "Request was cancelled."));
 
         var metadata = await metadataRepository.GetMetadataByIdAsync(id, ct);
         if (metadata is null)
