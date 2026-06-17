@@ -26,7 +26,7 @@ public class ProductService(IProductRepository productRepository) : IProductServ
         return Result.Success();
     }
 
-    public async Task<Result<Product>> GetProductByIdAsync(CancellationToken ct, Guid id)
+    public async Task<Result<Product>> GetProductByIdAsync(string id, CancellationToken ct)
     {
         if (ct.IsCancellationRequested)
             return Result<Product>.Failure(new Error(ErrorCode.BadRequest, "Request was cancelled."));

@@ -20,7 +20,7 @@ public class ProductController(IProductService productService) : BaseController
     {
         var product = new Product
         {
-            Id = Guid.NewGuid(),
+            Id = string.Empty,
             Name = "Sample Product",
             Description = "This is a sample product.",
             Price = 9.99m,

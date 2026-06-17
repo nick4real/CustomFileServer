@@ -6,7 +6,7 @@ namespace CFS.Infrastructure.Maps;
 public static class ProductMap
 {
     extension (Product product) {
-        public ProductBson MapToBson()
+        public ProductBson? MapToBson()
         {
             if (product == null) return null;
 
@@ -23,7 +23,7 @@ public static class ProductMap
 
     extension (ProductBson productBson)
     {
-        public Product MapToDomain()
+        public Product? MapToDomain()
         {
             if (productBson == null) return null;
 

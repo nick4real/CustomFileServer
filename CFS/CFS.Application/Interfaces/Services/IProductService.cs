@@ -6,6 +6,6 @@ namespace CFS.Application.Interfaces.Services;
 public interface IProductService
 {
     public Task<Result<IEnumerable<Product>>> GetProductsAsync(CancellationToken ct);
-    public Task<Result<Product>> GetProductByIdAsync(CancellationToken ct, Guid id);
+    public Task<Result<Product>> GetProductByIdAsync(string id, CancellationToken ct);
     public Task<Result> AddProductAsync(CancellationToken ct, Product product);
 }

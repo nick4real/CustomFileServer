@@ -1,4 +1,4 @@
-﻿using CFS.Domain.Entities;
+﻿using CFS.Infrastructure.Models;
 using CFS.Infrastructure.Options;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
@@ -11,9 +11,9 @@ public class MongoDbContext
     private readonly IMongoClient _mongoClient;
     private readonly IMongoDatabase _mongoDatabase;
     private readonly GridFSBucket _gridFSBucket;
-    private readonly IMongoCollection<Product> _products;
+    private readonly IMongoCollection<ProductBson> _products;
     public GridFSBucket GridFSBucket => _gridFSBucket;
-    public IMongoCollection<Product> Products => _products;
+    public IMongoCollection<ProductBson> Products => _products;
 
     public MongoDbContext(IOptions<MongoDbOptions> options)
     {
@@ -25,6 +25,6 @@ public class MongoDbContext
         {
             BucketName = mongoOptions.FilesCollectionName
         });
-        _products = _mongoDatabase.GetCollection<Product>(mongoOptions.ProductsCollectionName);
+        _products = _mongoDatabase.GetCollection<ProductBson>(mongoOptions.ProductsCollectionName);
     }
 }
